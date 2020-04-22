@@ -7,17 +7,23 @@ contract ContentValidation {
     mapping (address => string) public validations;
     
     uint public numValidators;
+    uint public content;
 
     event Validate(address _from, string _message);
 
     constructor() public {
         proposer = msg.sender;
         numValidators = 0;
+        content = 0;
     }
 
-    function validateContent(address fromAddress, string memory message) public {
-        validations[fromAddress] = message;
-        numValidators ++;
+    function validateContent(address fromAddress, string memory message, uint256 contentId) public {
+       
+        if (message == "yes") {
+            validations[fromAddress] = message;
+            content = contentId;
+            numValidators ++;
+        }
     }
 
 }
