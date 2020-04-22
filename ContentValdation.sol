@@ -19,11 +19,10 @@ contract ContentValidation {
 
     function validateContent(address fromAddress, string memory message, uint256 contentId) public {
        
-        if (message == "yes") {
-            validations[fromAddress] = message;
-            content = contentId;
-            numValidators ++;
-        }
+        validations[fromAddress] = message;
+        content = contentId;
+        numValidators ++;
+        
     }
 
 }
